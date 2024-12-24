@@ -1,26 +1,36 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Projeto_Thayssa.Data;
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+internal class Program {
+    public static void Main(string[] args) {
+        var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
+        builder.Services.AddDbContext<BancoContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment()) {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+        // Adicionar serviços ao container
+        builder.Services.AddControllersWithViews();
+
+        var app = builder.Build();
+
+        // Configurar o pipeline de requisições HTTP
+        if (!app.Environment.IsDevelopment()) {
+            app.UseExceptionHandler("/Home/Error");
+            app.UseHsts();
+        }
+
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+
+        app.UseRouting();
+
+        app.UseAuthorization();
+
+        app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
+
+        app.Run();
+    }
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();
