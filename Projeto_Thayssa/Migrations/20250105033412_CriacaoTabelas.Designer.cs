@@ -12,7 +12,7 @@ using Projeto_Thayssa.Data;
 namespace Projeto_Thayssa.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20250105025838_CriacaoTabelas")]
+    [Migration("20250105033412_CriacaoTabelas")]
     partial class CriacaoTabelas
     {
         /// <inheritdoc />

@@ -66,8 +66,8 @@ namespace Projeto_Thayssa.Controllers {
                 ViewBag.MensagemPercentual = "O valor do percentual de desconto não pode ser maior que 100%";
                 return View(beneficio);
             }
-            if (beneficio.percentual == null || beneficio.percentual == 0) {
-                ViewBag.MensagemPercentual = "Digite um valor para o percentual de desconto";
+            if (beneficio.percentual <= 0) {
+                ViewBag.MensagemPercentual = "Verifique se o valor não é menor ou igual a 0";
                 return View(beneficio);
             }
             _bancoContext.Beneficio.Add(beneficio);
@@ -88,9 +88,10 @@ namespace Projeto_Thayssa.Controllers {
                 ViewBag.MensagemPercentual = "O valor do percentual de desconto não pode ser maior que 100%";
                 return View(beneficio);
             }
-            if (beneficio.percentual == null || beneficio.percentual == 0) {
-                ViewBag.MensagemPercentual = "Digite um valor para o percentual de desconto";
+            if (beneficio.percentual <= 0) {
+                ViewBag.MensagemPercentual = "Verifique se o valor não é menor ou igual a 0";
                 return View(beneficio);
+
             }
             beneficioDB.nome_beneficio = beneficio.nome_beneficio;
             beneficioDB.percentual = beneficio.percentual;
