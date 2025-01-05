@@ -17,6 +17,5 @@ namespace Projeto_Thayssa.Models {
 
         //Relacionamentos:
         public ICollection<ContribuinteBeneficio_Model> ContribuinteBeneficios { get; set; } = new List<ContribuinteBeneficio_Model>();
-        public ICollection<Pagamento_Model> Pagamento { get; set; } = new List<Pagamento_Model>();
     }
 }
