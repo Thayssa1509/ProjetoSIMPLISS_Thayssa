@@ -4,8 +4,6 @@ using Projeto_Thayssa.Controllers;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Projeto_Thayssa.Models {
-
-    [NotMapped]
     public class Pagamento_Model {
         public int Id { get; set; }
         public decimal valor_inicial { get; set; }

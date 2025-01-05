@@ -1,0 +1,6 @@
+Referências:
+- https://www.youtube.com/watch?v=FVUEC_XVM5Y&list=PL4u33szs9VKu_WpPw7_k5weS1Bt_whYGv
+- https://getbootstrap.com/docs/5.3/forms/validation/
+- https://www.w3schools.com
+- https://learn.microsoft.com/pt-br/aspnet/overview
+- Pesquisas também foram feitas pelo ChatGPT.
