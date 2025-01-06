@@ -11,16 +11,17 @@ namespace Projeto_Thayssa.Controllers {
             _bancoContext = bancoContext;
         }
 
-        public IActionResult Simular() {
-            List<Contribuinte_Model> contribuinte = _bancoContext.Contribuinte.ToList();
+        public IActionResult Simular()
+        {
+            var contribuinte = _bancoContext.Contribuinte.ToList();
 
-            // Lista de SelectListItem para renderização na view
-            var contribuinteList = contribuinte.Select(c => new SelectListItem {
-                Value = c.Id.ToString(),  // O valor enviado ao banco
-                Text = c.RazaoSocial    // O texto exibido no select
+            var contribuinteList = contribuinte.Select(c => new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = $"{c.RazaoSocial} - CNPJ: {c.Cnpj}"  // Adicionando o CNPJ ao texto
             }).ToList();
-            var model = new Pagamento_Model();
 
+            var model = new Pagamento_Model();
             ViewBag.Contribuintes = contribuinteList;
 
             return View(model);
